@@ -10,7 +10,7 @@ import net.minidev.json.JSONArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ReadJsonFromTestFile {
+public class ReadJsonFromFileTest {
 
     @Test
     public void testAccessToJsonFile() throws IOException {
