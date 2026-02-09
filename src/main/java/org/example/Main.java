@@ -5,16 +5,17 @@ public class Main {
         Input input = new Input();
         Output output = new Output();
         Requester requester = new Requester();
-        //RevisionParser parser = new RevisionParser();
+        RevisionParser parser = new RevisionParser();
 
         try {
             String title = input.getUserInput();
 
             String json = requester.fetchRecentRevisions(title);
 
-            output.print("Raw JSON Data: " + json);
+            output.print(parser.parse(json));
+
         } catch (WikiException e) {
-            output.print("Error: " + e.getMessage());
+            output.printErorrMessage(e);
         }
 
     }
