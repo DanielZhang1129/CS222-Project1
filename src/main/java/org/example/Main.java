@@ -12,6 +12,8 @@ public class Main {
 
             String json = requester.fetchRecentRevisions(title);
 
+            output.printRedirect(title,parser.getRedirectTarget(json));
+
             output.print(parser.parse(json));
 
         } catch (WikiException e) {
