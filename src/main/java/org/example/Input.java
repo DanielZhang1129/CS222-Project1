@@ -9,8 +9,5 @@ public class Input {
     public String getUserInput() {
         System.out.print("Please enter the title: ");
         return scanner.nextLine();
-
-
-
     }
 }
