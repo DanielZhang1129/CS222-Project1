@@ -12,12 +12,12 @@ public class Main {
 
             String json = requester.fetchRecentRevisions(title);
 
-            output.printRedirect(title,parser.getRedirectTarget(json));
+            output.printRedirect(parser.getRedirectTarget(json));
 
-            output.print(parser.parse(json));
+            output.printRevisions(parser.parse(json));
 
         } catch (WikiException e) {
-            output.printErorrMessage(e);
+            output.printErrorMessage(e);
         }
 
     }
