@@ -8,10 +8,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SearchController {
-    VBox searchVBox = new VBox(10);
+    private VBox searchVBox = new VBox(50);
+    private Stage Stage;
 
-    public SearchController(Stage primaryStage) {
-        primaryStage = primaryStage;
+    public SearchController(Stage Stage) {
+        this.Stage = Stage;
     }
 
     public Parent getView() {
