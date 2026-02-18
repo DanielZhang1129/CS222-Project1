@@ -1,24 +1,23 @@
 package org.example;
 
-public class Main {
+import javafx.application.Application;
+
+import javafx.scene.Scene;
+
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        WelcomeController welcomeController = new WelcomeController(primaryStage);
+        Scene scene = new Scene(welcomeController.getView(), 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Wiki Viewer");
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        Input input = new Input();
-        Output output = new Output();
-        Requester requester = new Requester();
-        RevisionParser parser = new RevisionParser();
-
-        try {
-            String title = input.getUserInput();
-
-            String json = requester.fetchRecentRevisions(title);
-
-            output.printRedirect(parser.getRedirectTarget(json));
-
-            output.printRevisions(parser.parse(json));
-
-        } catch (WikiException e) {
-            output.printErrorMessage(e);
-        }
-
+        Application.launch();
     }
 }
