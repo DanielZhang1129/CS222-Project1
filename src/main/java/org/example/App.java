@@ -16,7 +16,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        // ---- UI controls（控件）----
+
         TextField titleField = new TextField();
         titleField.setPromptText("Please enter the title");
 
@@ -27,11 +27,11 @@ public class App extends Application {
         TextArea outputArea = new TextArea();
         outputArea.setEditable(false);
 
-        // ---- Your existing logic classes（你原来的逻辑类）----
+
         Requester requester = new Requester();
         RevisionParser parser = new RevisionParser();
 
-        // ---- Event handler（事件处理器）----
+
         searchBtn.setOnAction(e -> {
             String title = titleField.getText() == null ? "" : titleField.getText().trim();
             if (title.isEmpty()) {
@@ -42,7 +42,7 @@ public class App extends Application {
             outputArea.clear();
             statusLabel.setText("Loading...");
 
-            // Background task（后台任务）
+
             Task<Void> task = new Task<>() {
                 @Override
                 protected Void call() throws Exception {
@@ -51,7 +51,7 @@ public class App extends Application {
                     String redirectTarget = parser.getRedirectTarget(json);
                     List<Revision> revisions = parser.parse(json);
 
-                    // Update UI on UI thread（在UI线程更新界面）
+
                     Platform.runLater(() -> {
                         if (redirectTarget != null) {
                             outputArea.appendText("Redirected to " + redirectTarget + "\n");
@@ -74,7 +74,7 @@ public class App extends Application {
                 }
             };
 
-            // Error handling（错误处理）
+
             task.setOnFailed(ev -> {
                 Throwable ex = task.getException();
                 String msg = (ex == null ? "unknown error" : ex.getMessage());
@@ -91,7 +91,7 @@ public class App extends Application {
             statusLabel.setText("");
         });
 
-        // ---- Layout（布局）----
+
         HBox top = new HBox(10, new Label("Title:"), titleField, searchBtn, clearBtn);
         VBox root = new VBox(10, top, statusLabel, outputArea);
         root.setPadding(new Insets(12));
@@ -101,7 +101,7 @@ public class App extends Application {
         stage.show();
     }
     public static void main(String[] args) {
-        launch(args); // 启动 JavaFX runtime（运行时）
+        launch(args);
     }
 
 }
