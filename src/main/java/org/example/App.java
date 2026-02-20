@@ -25,6 +25,7 @@ public class App extends Application {
 
         Label statusLabel = new Label();
         TextArea outputArea = new TextArea();
+        outputArea.setPrefSize(800, 400);
         outputArea.setEditable(false);
 
 
