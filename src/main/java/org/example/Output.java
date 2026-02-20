@@ -3,25 +3,24 @@ package org.example;
 import java.util.List;
 
 public class Output {
-    public void printErrorMessage(Exception e) {
-        System.err.println(e.getMessage());
-    }
 
-    public void printRevisions(List<Revision> revisions) {
+    public String getRevisions(List<Revision> revisions) {
         if (revisions == null || revisions.isEmpty()) {
-            System.out.println("No revisions found");
-            return;
+            return "No revisions found";
         }
         int i = 1;
+        String formatted = "";
         for (Revision revision : revisions) {
-            System.out.printf("%d  %s  %s\n", i, revision.getTimestamp(), revision.getUser());
+            formatted += i + " " + revision.getTimestamp() + " " + revision.getUser() + "\n";
             i++;
         }
+        return formatted;
     }
 
-    public void printRedirect(String target) {
+    public String getRedirect(String target) {
         if (target != null) {
-            System.out.println("Redirected to " + target);
+            return "Redirected to " + target+"\n";
         }
+        return "";
     }
 }
