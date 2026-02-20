@@ -96,7 +96,15 @@ public class App extends Application {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
-                alert.setHeaderText("Network connection required");
+                if(ex instanceof NotFoundException) {
+                    alert.setHeaderText("Page Not Found");
+                }
+                else if(ex instanceof NetworkException) {
+                    alert.setHeaderText("Network Error");
+                }
+                else{
+                    alert.setHeaderText("An Error Occurred");
+                }
                 alert.setContentText(msg);
                 alert.showAndWait();
 
