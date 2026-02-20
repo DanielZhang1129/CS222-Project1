@@ -76,6 +76,11 @@ public class App extends Application {
                         }
 
                         statusLabel.setText("Done.");
+
+                        searchBtn.setDisable(false);
+                        clearBtn.setDisable(false);
+                        titleField.setDisable(false);
+                        
                     });
 
                     return null;
