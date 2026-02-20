@@ -35,6 +35,11 @@ public class App extends Application {
         searchBtn.setOnAction(e -> {
             String title = titleField.getText() == null ? "" : titleField.getText().trim();
             if (title.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error: empty title");
+                alert.setHeaderText("Error: empty title");
+                alert.setContentText("Please provide an article name.");
+                alert.showAndWait();
                 statusLabel.setText("Error: empty title");
                 return;
             }
