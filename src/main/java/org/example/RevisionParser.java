@@ -33,12 +33,9 @@ public class RevisionParser {
             throw new ParseException("JSON is empty.");
         }
 
-        try {
-            List<Object> missing = JsonPath.read(json, "$..missing");
-            if (!missing.isEmpty()) {
-                throw new NotFoundException("Page not found");
-            }
-        } catch (PathNotFoundException e) {
+        List<Object> missing = JsonPath.read(json, "$..missing");
+        if (!missing.isEmpty()) {
+            throw new NotFoundException("Page not found");
         }
 
         try {
